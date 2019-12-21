@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASPNETCoreSQLServerWebApplicationSample.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASPNETCoreSQLServerWebApplicationSample.Controllers
 {
@@ -19,6 +20,7 @@ namespace ASPNETCoreSQLServerWebApplicationSample.Controllers
         }
 
         // GET: Owners
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var animalOwnersContext = _context.Owner.Include(o => o.Animal);

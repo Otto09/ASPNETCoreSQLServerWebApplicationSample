@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASPNETCoreSQLServerWebApplicationSample.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ASPNETCoreSQLServerWebApplicationSample.Controllers
 {
@@ -19,6 +20,7 @@ namespace ASPNETCoreSQLServerWebApplicationSample.Controllers
         }
 
         // GET: Animals
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Animal.ToListAsync());
